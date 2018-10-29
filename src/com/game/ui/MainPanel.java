@@ -26,6 +26,10 @@ public class MainPanel extends JPanel {
 		this.setLayout(null); // 自动布局，用约束的方式，确定界面组件的位置和宽高
 
 		this.addChild(); // 添加放在自身上面的子视图
+		this.addChildHome();
+		this.addChildMine();
+		this.addChildEnemy1();
+		this.addChildEnemy2();
 	}
 
 	public void addChild() {
@@ -48,5 +52,33 @@ public class MainPanel extends JPanel {
 			}
 		}
 	}
-
+	
+	public void addChildHome(){
+		JLabel imageLable = new JLabel();
+		imageLable.setBounds(40 * 15, 40 * 16, 40, 40);
+		imageLable.setIcon(new ImageIcon(DataCenter.getImage(0)));
+		this.add(imageLable);
+	}
+	
+	
+	public void addChildMine(){
+		JLabel imageLable = new JLabel();
+		imageLable.setBounds(40 * 13, 40 * 16, 40, 40);
+		imageLable.setIcon(new ImageIcon(DataCenter.getImage(3)));
+		this.add(imageLable);
+	}
+	
+	public void addChildEnemy1(){
+		JLabel imageLable = new JLabel();
+		imageLable.setBounds(40 * 2, 40 * 1, 40, 40);
+		imageLable.setIcon(new ImageIcon(DataCenter.getImage(1)));
+		this.add(imageLable);
+	}
+	
+	public void addChildEnemy2(){
+		JLabel imageLable = new JLabel();
+		imageLable.setBounds(40 * 28, 40 * 1, 40, 40);
+		imageLable.setIcon(new ImageIcon(DataCenter.getImage(2)));
+		this.add(imageLable);
+	}
 }

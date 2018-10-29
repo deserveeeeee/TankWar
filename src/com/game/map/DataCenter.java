@@ -39,6 +39,10 @@ public class DataCenter {
 		keyImgNames.put(6, "brick.png");
 		keyImgNames.put(7, "water.png");
 		keyImgNames.put(9, "steels.png");
+		keyImgNames.put(0, "home.jpg");
+		keyImgNames.put(1, "tankD.gif");
+		keyImgNames.put(2, "tankR.gif");
+		keyImgNames.put(3, "mine.png");
 	}
 
 	public static Image getImage(int key) {
