@@ -16,10 +16,7 @@ public class EnemyTank01 extends EnemyTanks {
 //		敌方坦克1:4,4
 //		如果是随机生成，则设置m和n的值
 		super(4, 2, 1 , 1);
-		reDirection();
-	}
-	
-	public void reDirection(){   //每三秒就产生一个新的方向
+		
 		final EnemyTank01 ref = this;
 		
 		Thread run = new Thread(new Runnable() {
@@ -27,7 +24,7 @@ public class EnemyTank01 extends EnemyTanks {
 				public void run() {
 					while(true){
 						try {
-							Thread.sleep(2000);
+							Thread.sleep(1000);
 //							每2秒就产生一个新的方向
 //							每一秒就产生一个新的移动的动作
 //							每移动不了就产生新的方向
@@ -39,11 +36,15 @@ public class EnemyTank01 extends EnemyTanks {
 						
 						int ram = new Random().nextInt(4);
 						char [] dirs = {'W','A','S','D'};
-						ref.move(Integer.valueOf(dirs[ram]));
+						ref.move(dirs[ram]);
+						ref.reDirection(dirs[ram]);
+//						ref.move(Integer.valueOf(dirs[ram]));
 //						int e = Integer.valueOf(dirs[ram]);
 					}
 				}
 			});
+		
+		run.start();
 	}
 	
 }

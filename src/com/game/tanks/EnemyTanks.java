@@ -1,5 +1,6 @@
 package com.game.tanks;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -19,6 +20,27 @@ public abstract class EnemyTanks extends AllTanks {
 	public EnemyTanks(int x, int y, int m , int n){
 		this.setBounds(40*m, 40*n, 40, 40);
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y+4)));
+	}
+	
+	
+	void move(int e){
+		Rectangle c = this.getBounds();
+		if (e == KeyEvent.VK_W) {  //w是前进
+			c.y -= 40;
+		}
+		if (e == KeyEvent.VK_S) {  //S是后退
+			c.y += 40;
+		}
+		if (e == KeyEvent.VK_A) {  //A是往左
+			c.x -= 40;
+		}
+		if (e == KeyEvent.VK_D) {  //D是往右
+			c.x += 40;
+		}
+		
+		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
+			this.setBounds(c);
+		}
 	}
 	
 	void reDirection(int e){
