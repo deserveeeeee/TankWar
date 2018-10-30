@@ -5,4 +5,4 @@
  * @author Administrator
  *
  */
-package com.game.player;
+package com.game.tanks;
