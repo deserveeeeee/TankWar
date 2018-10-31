@@ -7,7 +7,8 @@ import java.util.Random;
 public class EnemyTank03 extends EnemyTanks {
 	Rectangle enemy03Rec = new Rectangle(40 , 40);
 	int enemy03C;
-
+	int lifeValue = 2;
+	
 	public EnemyTank03(int x, int y, int m, int n) {
 		super(x, y, m, n);
 		// TODO Auto-generated constructor stub

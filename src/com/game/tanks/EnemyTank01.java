@@ -7,6 +7,7 @@ import java.util.Random;
 public class EnemyTank01 extends EnemyTanks {
 	Rectangle enemy01Rec = new Rectangle(40 , 40);
 	int enemy01C;
+	int lifeValue = 0;
 	
 	public EnemyTank01(int x, int y, int m, int n) {
 		

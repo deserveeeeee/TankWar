@@ -1,6 +1,10 @@
 package com.game.map;
 
 import java.awt.Color;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,7 +13,8 @@ import javax.swing.JPanel;
 import com.game.tanks.*;
 
 public class MainPanel extends JPanel {
-
+	public Map<Rectangle, JLabel> brickJLabels = new HashMap<Rectangle, JLabel>();
+	public Map<Rectangle, JLabel> waterJLabels = new HashMap<Rectangle, JLabel>();
 	/**
 	 * 
 	 */
@@ -55,7 +60,6 @@ public class MainPanel extends JPanel {
 	public void addChild() {   //设计布局场景：包括砖块、铁块、水块和草块等不移动的场景
 		// 在这个panel里面添加元素
 		// 每一个imageLable元素是用excel设计好的图片
-		
 		// 设置位置和imageLable大小
 		for (int i = 0; i < 31; i++) {
 			for (int j = 0; j < 18; j++) {
@@ -67,7 +71,16 @@ public class MainPanel extends JPanel {
 				if (DataCenter.map[j][i] == -1) {
 					continue;
 				}
+//				配置图片
 				imageLable.setIcon(new ImageIcon(DataCenter.getImage(DataCenter.map[j][i])));
+//				如果是砖头就把它加到这个砖头数组里面
+				if (DataCenter.map[j][i] == 1) {
+					brickJLabels.put(imageLable.getBounds(), imageLable);
+				}
+//				如果是水就把它加到这个水数组里面
+				if (DataCenter.map[j][i] == 9) {
+					waterJLabels.put(imageLable.getBounds(), imageLable);
+				}
 				this.add(imageLable); // 构建好控件之后，不要忘记添加
 			}
 		}

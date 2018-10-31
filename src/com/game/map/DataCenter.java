@@ -1,6 +1,7 @@
 package com.game.map;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,6 +10,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 
 public class DataCenter {
 	public static int[][] map = { 
@@ -146,5 +148,16 @@ public class DataCenter {
 			e.printStackTrace();
 		}
 		return image;
+	}
+
+//	子弹碰到砖头，子弹消失、砖头消失的方法
+	public static void brickDisappear(Rectangle rec){
+		map[rec.y/40][rec.x/40] = -1;
+		MainPanel.getInstance().remove(
+				MainPanel.getInstance().brickJLabels.get(rec));
+		MainPanel.getInstance().brickJLabels.remove(rec);
+//		Rectangle imageLable = imageLable.getBounds();
+//		先只让这个地方变成-1，看砖头图片能否消失
+//		MainPanel.getInstance().remove(comp);
 	}
 }

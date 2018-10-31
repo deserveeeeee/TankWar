@@ -15,6 +15,7 @@ import com.game.map.MainPanel;
 public class MineTank extends AllTanks {
 	Rectangle mineRec = new Rectangle(40 , 40);
 	int mineC;
+	int lifeValue = 2;
 	
 	public MineTank(){
 //		在DataCenter里面我方坦克的图片已经准备好了，现在需要把这个图片部署带JLable上
