@@ -2,12 +2,15 @@ package com.game.tanks;
 
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
 import com.game.ui.DataCenter;
+import com.game.ui.MainPanel;
 
 public abstract class EnemyTanks extends AllTanks {
+	public int lifevalue;
 // 有三个level的敌方坦克
 // 不同颜色的图片
 //	不同的地点：两边都是level01的坦克，中间是level02（7）个，level03（3）个。
@@ -17,6 +20,7 @@ public abstract class EnemyTanks extends AllTanks {
 //	如果是随机生成，则设置m和n的值
 //	x和y是这个小图片在大图片里面的坐标位置
 //	m和n是这个JLable的位置
+//	public static EnemyTanks [] enemyTanks = new  EnemyTanks [3];
 	public EnemyTanks(int x, int y, int m , int n){
 		this.setBounds(40*m, 40*n, 40, 40);
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y)));
@@ -60,5 +64,11 @@ public abstract class EnemyTanks extends AllTanks {
 		
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(a, b)));
 		return e;
+	}
+	
+	
+	void dead(){
+		MainPanel.getInstance().remove(this);
+		MainPanel.getInstance().repaint();
 	}
 }

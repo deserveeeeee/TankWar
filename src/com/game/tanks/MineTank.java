@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.game.bullet.AllBullets;
+import com.game.bullet.MineBullets;
 import com.game.ui.DataCenter;
 import com.game.ui.MainPanel;
 
@@ -89,6 +90,12 @@ public class MineTank extends AllTanks {
 	void shoot(){
 			AllBullets xAllBullets = new AllBullets(this.getBounds(), this.direction);
 			MainPanel.getInstance().add(xAllBullets);
+	}
+	
+//	我方死亡事件
+	void dead(){
+		MainPanel.getInstance().remove(this);
+		MainPanel.getInstance().repaint();
 	}
 	
 }

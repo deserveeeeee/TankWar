@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.game.ui.DataCenter;
+import com.game.ui.MainPanel;
 
 public abstract class AllTanks extends JLabel {
 	
@@ -36,5 +37,7 @@ public abstract class AllTanks extends JLabel {
 			this.setBounds(c);
 		}
 	}
+	
+
 	
 }

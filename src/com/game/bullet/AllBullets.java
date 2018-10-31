@@ -9,13 +9,14 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import com.game.tanks.EnemyTanks;
 import com.game.ui.DataCenter;
 import com.game.ui.MainPanel;
 
 public class AllBullets extends JLabel {
 	Thread xThread;
 	Map<Integer, Image> dirImages = new HashMap<Integer, Image>();
-
+//  敌方子弹和我方子弹不同的地方就只在于它们能使得对方的生命值-1（普通子弹）。
 //	其实子弹的构造方法就是发生子弹的方法，而这个方法必须要弄到接口里面
 	public AllBullets(Rectangle rec, int c) {
 //		新建的时候get子弹的图片
@@ -88,6 +89,13 @@ public class AllBullets extends JLabel {
 			if (k == 8) {
 				xThread.interrupt();
 			}
+			
+//			如果碰到了敌方坦克（现在只暂时写了地方灰色坦克）
+//			if (rec == EnemyTanks.enemyTanks[0].getBounds()) {
+//				EnemyTanks.enemyTanks[0].lifevalue --;
+//				System.out.println(EnemyTanks.enemyTanks[0].lifevalue);
+//				xThread.interrupt();
+//			}
 		}
 	}
 	

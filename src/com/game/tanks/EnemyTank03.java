@@ -4,6 +4,8 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import com.game.ui.MainPanel;
+
 public class EnemyTank03 extends EnemyTanks {
 	int direction;
 	int lifeValue = 2;
@@ -15,6 +17,8 @@ public class EnemyTank03 extends EnemyTanks {
 //	红色坦克，放在中间
 	public EnemyTank03() {
 		super(6, 2, 15, 1);
+//		EnemyTanks.enemyTanks[2] = this;s
+		
 		direction = KeyEvent.VK_S;
 		final EnemyTank03 ref = this;
 		
@@ -43,5 +47,11 @@ public class EnemyTank03 extends EnemyTanks {
 		
 		run.start();
 	}
-
+	
+	@Override
+	void dead(){
+		MainPanel.getInstance().remove(this);
+		MainPanel.getInstance().repaint();
+//		EnemyTanks.enemyTanks[2] = null;
+	}
 }
