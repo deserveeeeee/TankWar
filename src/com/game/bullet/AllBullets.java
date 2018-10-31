@@ -44,13 +44,15 @@ public class AllBullets extends JLabel {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					ref.flyStep(ref.getBounds(), direction);
+					ref.oneStep(rec, c);
+//					ref.flyStep(ref.getBounds(), direction);
 //					如果发生碰撞则移除子弹对象，并且跳出while循环。
 //					并且发生爆炸的行为（爆发还没有写出来，等写出来以后再添加上）
 //					todo-list
 //					并且发生被移除的行为
 					if (ref.collision()) {
 						ref.destroy();
+						Thread.interrupted();
 						break;
 					}
 				}
@@ -90,12 +92,13 @@ public class AllBullets extends JLabel {
 	
 //  子弹碰到场景物品的方法
 	boolean collision() {
+		/*
 		int i = nextStep(this.getBounds(), direction).y /40;
 		int j = nextStep(this.getBounds(), direction).x /40;
-		/*
+		*/
 		int i = this.getBounds().y / 40; // 是矩形的y，是二维数组的行数
 		int j = this.getBounds().x / 40; // 是矩形的x，是二维数组的列数
-		*/
+		
 		int k = DataCenter.map[i][j];
 		if (i >= DataCenter.map.length || j >= DataCenter.map[0].length) {
 			return true;
@@ -111,6 +114,7 @@ public class AllBullets extends JLabel {
 		return false;
 	}
 	
+	/*
 //	子弹下一步的坐标
 	Rectangle nextStep(Rectangle rec, int c) {
 		
@@ -145,5 +149,36 @@ public class AllBullets extends JLabel {
 		}
 	}
 	
+	*/
+	
+	void oneStep(Rectangle rec, int c){
+		if (c == KeyEvent.VK_W) {  //w是前进
+			rec.y -= 40;
+		}
+		if (c == KeyEvent.VK_S) {  //S是后退
+			rec.y += 40;
+		}
+		if (c == KeyEvent.VK_A) {  //A是往左
+			rec.x -= 40;
+		}
+		if (c == KeyEvent.VK_D) {  //D是往右
+			rec.x += 40;
+		}
+		/*
+		//  子弹碰到水的方法
+		if (DataCenter.map[rec.y / 40][rec.x / 40] == 9) {
+//			当碰到水的时候，就把它移除，然后移动子弹，再重新布置水
+			JLabel xJLabel = MainPanel.getInstance(). waterJLabels.get(rec);
+			MainPanel.getInstance().remove(xJLabel);
+			this.setBounds(rec);
+			MainPanel.getInstance().add(xJLabel);
+			MainPanel.getInstance().repaint();
+		}else{
+			this.setBounds(rec);
+//			MainPanel.getInstance().repaint();
+		}
+		*/
+		this.setBounds(rec);
+	}
 	
 } 
