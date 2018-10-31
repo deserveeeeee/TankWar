@@ -12,7 +12,7 @@ public abstract class AllTanks extends JLabel {
 	
 	
 //	移动的方法
-	void move(int e){
+	Rectangle move(int e){
 		Rectangle c = this.getBounds();
 		if (e == KeyEvent.VK_W) {  //w是前进
 			c.y -= 40;
@@ -30,6 +30,7 @@ public abstract class AllTanks extends JLabel {
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
 			this.setBounds(c);
 		}
+		return c;
 	}
 	
 }

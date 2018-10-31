@@ -23,7 +23,7 @@ public abstract class EnemyTanks extends AllTanks {
 	}
 	
 	
-	void move(int e){
+	Rectangle move(int e){
 		Rectangle c = this.getBounds();
 		if (e == KeyEvent.VK_W) {  //w是前进
 			c.y -= 40;
@@ -41,9 +41,10 @@ public abstract class EnemyTanks extends AllTanks {
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
 			this.setBounds(c);
 		}
+		return c;
 	}
 	
-	void reDirection(int a,int e){
+	int reDirection(int a,int e){
 		int b = 0 ;
 		if (e == KeyEvent.VK_W) {  //w是前进
 			b = 0;
@@ -59,5 +60,6 @@ public abstract class EnemyTanks extends AllTanks {
 		}
 		
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(a, b)));
+		return e;
 	}
 }

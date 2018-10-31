@@ -48,6 +48,19 @@ public class DataCenter {
 		for (int i = 0; i < images.length; i++) {
 			keyImgNames.put(i, images[i].getName());
 		}
+		/*
+		 具体的key对应的图片为
+		0	blast
+		1	brick
+		2	bullet
+		3	Enemytanks
+		4	gameover
+		5	grass
+		6	home
+		7	MineTank
+		8	steels
+		9	water
+		 * */
 		/*  手工设置的方法
 		keyImgNames.put(4, "grass.png");
 		keyImgNames.put(6, "brick.png");
