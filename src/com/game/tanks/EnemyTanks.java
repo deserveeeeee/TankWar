@@ -19,7 +19,7 @@ public abstract class EnemyTanks extends AllTanks {
 //	m和n是这个JLable的位置
 	public EnemyTanks(int x, int y, int m , int n){
 		this.setBounds(40*m, 40*n, 40, 40);
-		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y+4)));
+		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y)));
 	}
 	
 	
@@ -43,7 +43,7 @@ public abstract class EnemyTanks extends AllTanks {
 		}
 	}
 	
-	void reDirection(int e){
+	void reDirection(int a,int e){
 		int b = 0 ;
 		if (e == KeyEvent.VK_W) {  //w是前进
 			b = 0;
@@ -58,6 +58,6 @@ public abstract class EnemyTanks extends AllTanks {
 			b = 1;
 		}
 		
-		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(0, b)));
+		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(a, b)));
 	}
 }

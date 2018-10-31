@@ -110,7 +110,7 @@ public class DataCenter {
 		Image image = null;
 		try {
 			image = ImageIO.read(new File("Images\\Enemytanks.bmp"))
-					.getSubimage(x*28, y*28, 28, 28)    //先截取需要的小图片
+					.getSubimage(x*28, (y+4)*28, 28, 28)    //先截取需要的小图片
 					.getScaledInstance(40, 40, Image.SCALE_DEFAULT);   //再把这个图片设置为需要的宽高度→40*40像素的大小
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -3,7 +3,8 @@ package com.game.tanks;
 import java.util.Random;
 
 public class EnemyTank01 extends EnemyTanks {
-
+	
+	
 	public EnemyTank01(int x, int y, int m, int n) {
 		
 //		敌方坦克1:4,4
@@ -13,6 +14,7 @@ public class EnemyTank01 extends EnemyTanks {
 	
 	public EnemyTank01() {
 		
+//		灰色坦克，放在左角落
 //		敌方坦克1:4,4
 //		如果是随机生成，则设置m和n的值
 		super(4, 2, 1 , 1);
@@ -37,7 +39,7 @@ public class EnemyTank01 extends EnemyTanks {
 						int ram = new Random().nextInt(4);
 						char [] dirs = {'W','A','S','D'};
 						ref.move(dirs[ram]);
-						ref.reDirection(dirs[ram]);
+						ref.reDirection(4,dirs[ram]);
 //						ref.move(Integer.valueOf(dirs[ram]));
 //						int e = Integer.valueOf(dirs[ram]);
 					}
