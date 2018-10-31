@@ -10,6 +10,11 @@ import com.game.map.DataCenter;
 
 public abstract class AllTanks extends JLabel {
 	
+//	增加这个方法是为了把构造方法变得更加单纯。
+//	abstract void nextBehavoir();
+//	public AllTanks(){
+//		nextBehavoir();
+//	}
 	
 //	移动的方法
 	Rectangle move(int e){

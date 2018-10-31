@@ -94,7 +94,7 @@ public class DataCenter {
 	public static Image getMineTankImage(int x ,int y) { 
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("Images\\MineTank.gif"))
+			image = ImageIO.read(new File("Images\\07MineTank.gif"))
 					.getSubimage(x*28, y*28, 28, 28)    //先截取需要的小图片
 					.getScaledInstance(40, 40, Image.SCALE_DEFAULT);   //再把这个图片设置为需要的宽高度→40*40像素的大小
 		} catch (IOException e) {
@@ -109,7 +109,7 @@ public class DataCenter {
 	public static Image getHomeBossImage() { 
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("Images\\home.jpg"))
+			image = ImageIO.read(new File("Images\\06home.jpg"))
 					.getScaledInstance(40, 40, Image.SCALE_DEFAULT);   //把这个图片设置为需要的宽高度→40*40像素的大小
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -122,8 +122,24 @@ public class DataCenter {
 	public static Image getEnemyTankImage(int x ,int y) { 
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("Images\\Enemytanks.bmp"))
+			image = ImageIO.read(new File("Images\\03Enemytanks.bmp"))
 					.getSubimage(x*28, (y+4)*28, 28, 28)    //先截取需要的小图片
+					.getScaledInstance(40, 40, Image.SCALE_DEFAULT);   //再把这个图片设置为需要的宽高度→40*40像素的大小
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return image;
+	}
+	
+	
+	
+//	准备子弹的图片
+	public static Image getBulletImage(int x) { 
+		Image image = null;
+		try {
+			image = ImageIO.read(new File("Images\\02bullet.png"))
+					.getSubimage(x*32, 0, 32, 32)    //先截取需要的小图片
 					.getScaledInstance(40, 40, Image.SCALE_DEFAULT);   //再把这个图片设置为需要的宽高度→40*40像素的大小
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

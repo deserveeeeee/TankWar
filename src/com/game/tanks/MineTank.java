@@ -8,7 +8,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import com.game.bullet.AllBullets;
 import com.game.map.DataCenter;
+import com.game.map.MainPanel;
 
 public class MineTank extends AllTanks {
 	Rectangle mineRec = new Rectangle(40 , 40);
@@ -49,11 +51,17 @@ public class MineTank extends AllTanks {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				mineRec = move(e.getKeyCode());
-//				ref.move(e.getKeyCode());
-//				ref.reDirection(e.getKeyCode());
-				mineC = reDirection(e.getKeyCode());
+				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					ref.shoot();
+				}else if (e.getKeyCode() == KeyEvent.VK_W ||
+						e.getKeyCode() == KeyEvent.VK_S ||
+						e.getKeyCode() == KeyEvent.VK_A ||
+						e.getKeyCode() == KeyEvent.VK_D) {
+					mineRec = move(e.getKeyCode());
+					mineC = reDirection(e.getKeyCode());
+				}else {}	
 			}
+			
 		});
 	}
 	
@@ -76,23 +84,10 @@ public class MineTank extends AllTanks {
 		return e;
 	}
 	
+//	先写我方坦克发子弹的方法，然后再分局设计弄到父类里面
+	void shoot(){
+			AllBullets xAllBullets = new AllBullets(this.mineRec, this.mineC);
+			MainPanel.getInstance().add(xAllBullets);
+	}
 	
-//	我方坦克死亡的话，那么设置3次生命值，每次死亡就会导致这个生命值-1。
-//	初始生命值为2（设置为minetank的属性）
-//	如果生命值为-1则不执行了
-//	不会影响map的设置，比如消失了的brick仍然是消失状态。
-//	也就是DataCenter的map数组就保持被处理以后的数据
-//	子弹碰到我方坦克的话，其逻辑仍然是子弹的下一步坐标是否和minetank当前坐标重合
-//	那么，是否就可以设置一个我方坦克的坐标属性和敌方坦克的坐标属性
-//	每次移动完成以后，就让这个属性值进行更新
-//	被打的次数，最开始为0,1,2.
-//	被打3次以后，就会造成我方坦克的死亡事件
-//	而灰色子弹造成被打次数减1，绿色子弹造成被打次数减2，红色子弹造成被打次数减3.
-//	如果<0，则造成我方坦克的死亡事件了。
-//	同理，敌方坦克也可以这样设置。
-//	我方子弹每次与敌方坦克的碰面，会造成敌方坦克的被打次数-1
-//	敌方红色坦克初始值为2。同样，如果<0，则造成敌方坦克的死亡事件了。
-//	敌方绿色坦克初始值为1。同样，如果<0，则造成敌方坦克的死亡事件了。
-//	敌方灰色坦克初始值为0。同样，如果<0，则造成敌方坦克的死亡事件了。
-//	
 }
