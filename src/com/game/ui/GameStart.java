@@ -1,4 +1,4 @@
-package com.game.map;
+package com.game.ui;
 
 import java.awt.Color;
 import java.awt.event.WindowStateListener;

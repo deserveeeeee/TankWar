@@ -5,4 +5,4 @@
  * @author Administrator
  *
  */
-package com.game.map;
+package com.game.ui;

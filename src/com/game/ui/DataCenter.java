@@ -1,4 +1,4 @@
-package com.game.map;
+package com.game.ui;
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -156,8 +156,5 @@ public class DataCenter {
 		MainPanel.getInstance().remove(
 				MainPanel.getInstance().brickJLabels.get(rec));
 		MainPanel.getInstance().brickJLabels.remove(rec);
-//		Rectangle imageLable = imageLable.getBounds();
-//		先只让这个地方变成-1，看砖头图片能否消失
-//		MainPanel.getInstance().remove(comp);
 	}
 }

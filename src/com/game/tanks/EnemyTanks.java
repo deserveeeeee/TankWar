@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-import com.game.map.DataCenter;
+import com.game.ui.DataCenter;
 
 public abstract class EnemyTanks extends AllTanks {
 // 有三个level的敌方坦克
@@ -23,7 +23,7 @@ public abstract class EnemyTanks extends AllTanks {
 	}
 	
 	
-	Rectangle move(int e){
+	void move(int e){
 		Rectangle c = this.getBounds();
 		if (e == KeyEvent.VK_W) {  //w是前进
 			c.y -= 40;
@@ -41,7 +41,6 @@ public abstract class EnemyTanks extends AllTanks {
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
 			this.setBounds(c);
 		}
-		return c;
 	}
 	
 	int reDirection(int a,int e){

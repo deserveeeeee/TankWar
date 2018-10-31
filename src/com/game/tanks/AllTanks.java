@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import com.game.map.DataCenter;
+import com.game.ui.DataCenter;
 
 public abstract class AllTanks extends JLabel {
 	
@@ -17,7 +17,7 @@ public abstract class AllTanks extends JLabel {
 //	}
 	
 //	移动的方法
-	Rectangle move(int e){
+	void move(int e){
 		Rectangle c = this.getBounds();
 		if (e == KeyEvent.VK_W) {  //w是前进
 			c.y -= 40;
@@ -35,7 +35,6 @@ public abstract class AllTanks extends JLabel {
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
 			this.setBounds(c);
 		}
-		return c;
 	}
 	
 }

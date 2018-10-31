@@ -9,12 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.game.bullet.AllBullets;
-import com.game.map.DataCenter;
-import com.game.map.MainPanel;
+import com.game.ui.DataCenter;
+import com.game.ui.MainPanel;
 
 public class MineTank extends AllTanks {
-	Rectangle mineRec = new Rectangle(40 , 40);
-	int mineC;
+//	Rectangle mineRec = new Rectangle(40 , 40);
+	int direction;
 	int lifeValue = 2;
 	
 	public MineTank(){
@@ -24,11 +24,11 @@ public class MineTank extends AllTanks {
 		this.setBounds(40*12, 40*16, 40, 40);
 		
 //		初始坐标设置
-		mineRec.setLocation(40*12, 40*16);
+//		mineRec.setLocation(40*12, 40*16);
 		
 //		再把图片部署上去
 		this.setIcon(new ImageIcon(DataCenter.getMineTankImage(0, 0)));
-		mineC = KeyEvent.VK_W;
+		direction = KeyEvent.VK_W;
 		
 		final MineTank ref = this;
 //		设置监听事件，一定要用这个来设置焦点
@@ -58,8 +58,8 @@ public class MineTank extends AllTanks {
 						e.getKeyCode() == KeyEvent.VK_S ||
 						e.getKeyCode() == KeyEvent.VK_A ||
 						e.getKeyCode() == KeyEvent.VK_D) {
-					mineRec = move(e.getKeyCode());
-					mineC = reDirection(e.getKeyCode());
+					ref.move(e.getKeyCode());
+					direction = reDirection(e.getKeyCode());
 				}else {}	
 			}
 			
@@ -87,7 +87,7 @@ public class MineTank extends AllTanks {
 	
 //	先写我方坦克发子弹的方法，然后再分局设计弄到父类里面
 	void shoot(){
-			AllBullets xAllBullets = new AllBullets(this.mineRec, this.mineC);
+			AllBullets xAllBullets = new AllBullets(this.getBounds(), this.direction);
 			MainPanel.getInstance().add(xAllBullets);
 	}
 	

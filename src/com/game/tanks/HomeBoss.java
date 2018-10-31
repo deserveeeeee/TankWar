@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.xml.crypto.Data;
 
-import com.game.map.DataCenter;
+import com.game.ui.DataCenter;
 
 public class HomeBoss extends JLabel {
 	public HomeBoss(){

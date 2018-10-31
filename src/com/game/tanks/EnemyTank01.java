@@ -5,8 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class EnemyTank01 extends EnemyTanks {
-	Rectangle enemy01Rec = new Rectangle(40 , 40);
-	int enemy01C;
+	int direction;
 	int lifeValue = 0;
 	
 	public EnemyTank01(int x, int y, int m, int n) {
@@ -22,8 +21,7 @@ public class EnemyTank01 extends EnemyTanks {
 //		敌方坦克1:4,4
 //		如果是随机生成，则设置m和n的值
 		super(4, 2, 1 , 1);
-		enemy01Rec.setLocation(40*1, 40*1);
-		enemy01C = KeyEvent.VK_S;
+		direction = KeyEvent.VK_S;
 		final EnemyTank01 ref = this;
 		
 		Thread run = new Thread(new Runnable() {
@@ -43,12 +41,7 @@ public class EnemyTank01 extends EnemyTanks {
 						
 						int ram = new Random().nextInt(4);
 						char [] dirs = {'W','A','S','D'};
-						enemy01Rec = move(dirs[ram]);
-//						ref.move(dirs[ram]);
-						enemy01C = reDirection(4,dirs[ram]);
-//						ref.reDirection(4,dirs[ram]);
-//						ref.move(Integer.valueOf(dirs[ram]));
-//						int e = Integer.valueOf(dirs[ram]);
+						direction = reDirection(4,dirs[ram]);
 					}
 				}
 			});
