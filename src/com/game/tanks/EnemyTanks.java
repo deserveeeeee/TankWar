@@ -10,20 +10,16 @@ import com.game.ui.DataCenter;
 import com.game.ui.MainPanel;
 
 public abstract class EnemyTanks extends AllTanks {
-	public int lifevalue;
-// 有三个level的敌方坦克
-// 不同颜色的图片
-//	不同的地点：两边都是level01的坦克，中间是level02（7）个，level03（3）个。
-//	敌方坦克1:4,4
-//	敌方坦克2:0,4
-//	敌方坦克3:6,4
-//	如果是随机生成，则设置m和n的值
-//	x和y是这个小图片在大图片里面的坐标位置
-//	m和n是这个JLable的位置
-//	public static EnemyTanks [] enemyTanks = new  EnemyTanks [3];
+	public int lifeValue;
+	public int direction;
+	
 	public EnemyTanks(int x, int y, int m , int n){
 		this.setBounds(40*m, 40*n, 40, 40);
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y)));
+		
+//		改动一：创建对象的时候就把数组放进去
+		Rectangle c = this.getBounds();
+		EnemyTanksManager.enemyTanksLocations.put(c, this);
 	}
 	
 	
@@ -43,6 +39,13 @@ public abstract class EnemyTanks extends AllTanks {
 		}
 		
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
+//			改动二：当位置成功发生变化以后就
+//			先移除原位置，原对象的数组
+			EnemyTanksManager.enemyTanksLocations.remove(this.getBounds(), this);
+//			再把新的位置，原对象装进去
+			EnemyTanksManager.enemyTanksLocations.put(c, this);
+			
+//			让位置更新，即位移。
 			this.setBounds(c);
 		}
 	}
@@ -64,11 +67,5 @@ public abstract class EnemyTanks extends AllTanks {
 		
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(a, b)));
 		return e;
-	}
-	
-	
-	void dead(){
-		MainPanel.getInstance().remove(this);
-		MainPanel.getInstance().repaint();
 	}
 }

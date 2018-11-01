@@ -1,24 +1,18 @@
 package com.game.tanks;
 
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import com.game.ui.MainPanel;
 
 public class EnemyTank02 extends EnemyTanks {
-	int direction;
-	int lifeValue = 1;
-	
+
+
 	public EnemyTank02(int x, int y, int m, int n) {
 		super(x, y, m, n);
-		// TODO Auto-generated constructor stub
-	}
-	
-//	绿色坦克，放在右角落
-	public EnemyTank02() {
-		super(0, 2, 29, 1);
-//		EnemyTanks.enemyTanks[1] = this;
+		lifeValue = 1;
+		//绿色坦克初始生命值为1，
+//		被普通子弹打一次就-1。
+		// 特殊子弹攻击值为一次性-3.
 		
 		direction = KeyEvent.VK_S;
 		final EnemyTank02 ref = this;
@@ -48,14 +42,8 @@ public class EnemyTank02 extends EnemyTanks {
 		
 		run.start();
 	}
-	
-	
-	@Override
-	void dead(){
-		MainPanel.getInstance().remove(this);
-		MainPanel.getInstance().repaint();
-//		EnemyTanks.enemyTanks[1] = null;
-	}
-	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 }

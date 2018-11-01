@@ -88,14 +88,10 @@ public class MineTank extends AllTanks {
 	
 //	先写我方坦克发子弹的方法，然后再分局设计弄到父类里面
 	void shoot(){
-			AllBullets xAllBullets = new AllBullets(this.getBounds(), this.direction);
-			MainPanel.getInstance().add(xAllBullets);
-	}
-	
-//	我方死亡事件
-	void dead(){
-		MainPanel.getInstance().remove(this);
-		MainPanel.getInstance().repaint();
+//		改动三：我方坦克发射子弹类中的我方子弹类
+		AllBullets xAllBullets = new MineBullets(this.getBounds(), this.direction);
+//		AllBullets xAllBullets = new AllBullets(this.getBounds(), this.direction);
+		MainPanel.getInstance().add(xAllBullets);
 	}
 	
 }
