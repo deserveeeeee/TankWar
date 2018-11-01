@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
@@ -13,8 +14,8 @@ import javax.swing.JPanel;
 import com.game.tanks.*;
 
 public class MainPanel extends JPanel {
-	public Map<Rectangle, JLabel> brickJLabels = new HashMap<Rectangle, JLabel>();
-	public Map<Rectangle, JLabel> waterJLabels = new HashMap<Rectangle, JLabel>();
+	public Map<Rectangle, JLabel> brickJLabels = new Hashtable<>();
+	public Map<Rectangle, JLabel> waterJLabels = new Hashtable<>();
 	
 	/**
 	 * 
@@ -65,10 +66,7 @@ public class MainPanel extends JPanel {
 		EnemyTanksManager.mineTank = new MineTank();
 		this.add(EnemyTanksManager.mineTank);
 		
-		EnemyTanksManager xCreator = new EnemyTanksManager();
-		for (EnemyTanks e : EnemyTanksManager.enemyTanks) {
-			this.add(e);
-		}
+//		EnemyTanksManager xCreator = new EnemyTanksManager();
 	}
 	
 	public void addChild() {   //设计布局场景：包括砖块、铁块、水块和草块等不移动的场景
