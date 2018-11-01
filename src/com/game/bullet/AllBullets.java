@@ -34,7 +34,7 @@ public class AllBullets extends JLabel {
 				// 让这个线程每隔0.1秒就执行一次位置变化
 				while(true){
 					try {
-						Thread.sleep(200);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						break;
 					}

@@ -15,6 +15,7 @@ import com.game.tanks.*;
 public class MainPanel extends JPanel {
 	public Map<Rectangle, JLabel> brickJLabels = new HashMap<Rectangle, JLabel>();
 	public Map<Rectangle, JLabel> waterJLabels = new HashMap<Rectangle, JLabel>();
+	
 	/**
 	 * 
 	 */
@@ -49,7 +50,7 @@ public class MainPanel extends JPanel {
 		
 //		todo-list：
 //		这里只是暂时这样写，然后看看能否把坦克给放上去
-		this.add(new MineTank()); //最好不要这样写
+//		this.add(new MineTank()); //最好不要这样写
 		this.add(new HomeBoss());
 //		敌方坦克暂时这样设置，后面需要动起来再修改
 		/*
@@ -61,6 +62,9 @@ public class MainPanel extends JPanel {
 		this.add(xEnemyTank3);
 		*/
 //		新建所有的坦克
+		EnemyTanksManager.mineTank = new MineTank();
+		this.add(EnemyTanksManager.mineTank);
+		
 		EnemyTanksManager xCreator = new EnemyTanksManager();
 		for (EnemyTanks e : EnemyTanksManager.enemyTanks) {
 			this.add(e);

@@ -3,6 +3,10 @@ package com.game.tanks;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import com.game.bullet.AllBullets;
+import com.game.bullet.EnemyBullets;
+import com.game.ui.MainPanel;
+
 
 public class EnemyTank01 extends EnemyTanks {
 
@@ -16,7 +20,7 @@ public class EnemyTank01 extends EnemyTanks {
 		direction = KeyEvent.VK_S;
 		final EnemyTank01 ref = this;
 		
-		Thread run = new Thread(new Runnable() {
+		run = new Thread(new Runnable() {
 				@Override
 				public void run() {
 					while(true){
@@ -35,12 +39,24 @@ public class EnemyTank01 extends EnemyTanks {
 						char [] dirs = {'W','A','S','D'};
 						ref.move(dirs[ram]);
 						direction = reDirection(4,dirs[ram]);
+						
+						if (ref.alive) {
+							ram = new Random().nextInt(2);
+							if (ram == 1) {
+								ref.shoot();
+							}
+						}else{
+							run.interrupt();
+							break;
+						}
 					}
 				}
 			});
 		
 		run.start();
 	}
+	
+	
 	/**
 	 * 
 	 */

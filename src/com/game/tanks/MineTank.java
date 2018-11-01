@@ -16,8 +16,8 @@ import com.game.ui.MainPanel;
 public class MineTank extends AllTanks {
 //	Rectangle mineRec = new Rectangle(40 , 40);
 	int direction;
-	int lifeValue = 2;
-	
+	int life = 2;
+	public int lifeValue = 2;
 	public MineTank(){
 //		在DataCenter里面我方坦克的图片已经准备好了，现在需要把这个图片部署带JLable上
 //		先设置我方坦克的lable大小和位置
@@ -90,8 +90,23 @@ public class MineTank extends AllTanks {
 	void shoot(){
 //		改动三：我方坦克发射子弹类中的我方子弹类
 		AllBullets xAllBullets = new MineBullets(this.getBounds(), this.direction);
-//		AllBullets xAllBullets = new AllBullets(this.getBounds(), this.direction);
 		MainPanel.getInstance().add(xAllBullets);
 	}
 	
+	
+//	死亡方法
+	public void dead(){
+//		让MainPanel里面这个被移除，然后刷新页面
+		MainPanel.getInstance().remove(this);
+		MainPanel.getInstance().repaint();
+		this.life -- ;
+		if (this.life < 0) {
+//			todo-list
+//			gameover;
+		}else{
+			this.setBounds(40*12, 40*16, 40, 40);
+			this.lifeValue = 2;
+			MainPanel.getInstance().add(this);
+		}
+	}
 }

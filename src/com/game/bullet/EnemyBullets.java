@@ -2,21 +2,21 @@ package com.game.bullet;
 
 import java.awt.Rectangle;
 
-import com.game.tanks.EnemyTank01;
 import com.game.tanks.EnemyTanks;
 import com.game.tanks.EnemyTanksManager;
 import com.game.ui.DataCenter;
 import com.game.ui.MainPanel;
 
-public class MineBullets extends AllBullets {
+public class EnemyBullets extends AllBullets {
 
-	public MineBullets(Rectangle rec, int c) {
+	public EnemyBullets(Rectangle rec, int c) {
 		super(rec, c);
-		
+		// TODO Auto-generated constructor stub
 	}
 	
+	
 	@Override
-//  子弹碰到场景物品的方法→我方子弹和敌方子弹不同的敌方就在于我方子弹只打敌方坦克
+//  子弹碰到场景物品的方法→敌方子弹和普通子弹不同的敌方就在于敌方子弹只打敌方坦克
 	void collision(Rectangle rec) {
 		int i = rec.y / 40; // 是矩形的y，是二维数组的行数
 		int j = rec.x / 40; // 是矩形的x，是二维数组的列数
@@ -36,17 +36,16 @@ public class MineBullets extends AllBullets {
 				xThread.interrupt();
 			}
 			
-//			如果碰到了敌方坦克
-			if(EnemyTanksManager.enemyTanksLocations.containsKey(rec)){
-				EnemyTanks x = EnemyTanksManager.enemyTanksLocations.get(rec);
-				x.lifeValue --;
-				if (x.lifeValue < 0) {
-					EnemyTanksManager.dead(x);
+//			普通子弹，是会造成伤害值-1.
+			if (rec.x == EnemyTanksManager.mineTank.getBounds().x &&
+					rec.y == EnemyTanksManager.mineTank.getBounds().y) {
+				EnemyTanksManager.mineTank.lifeValue --;
+				if (EnemyTanksManager.mineTank.lifeValue < 0) {
+					EnemyTanksManager.mineTank.dead();
 				}
 				xThread.interrupt();
 			}
-			
 		}
 	}
-
+// 普通子弹让生命值掉1，即-1.
 }

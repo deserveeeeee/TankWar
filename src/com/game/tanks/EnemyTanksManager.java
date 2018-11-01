@@ -9,29 +9,9 @@ import com.game.ui.MainPanel;
 
 
 public class EnemyTanksManager {
-
+	public static MineTank mineTank;
 //	最重要的逻辑是：如何让一个坦克的死亡导致另外一个坦克的产生？
 //	设置一个静态下标数，每次下标数+1，就会让mainPaneladd一个JLable，而这个JLable对象是早就预设好了的（游戏设计者也可以在后台改）
-	
-	
-	/*  这是实时监控坦克对象们的生命值，让它们生命值小于零，就会造成死亡事件
-	Thread killed = new Thread(new Runnable() {
-		
-		@Override
-		public void run() {
-			while(true){
-				if (ref.lifeValue < 0) {
-					ref.dead();
-				}
-			}
-			
-		}
-	});
-	
-	killed.start();
-	*/
-	
-	
 
 //	改动四：
 //  敌方坦克们的对象和初始位置的数组
@@ -76,7 +56,7 @@ public class EnemyTanksManager {
 //		改动七：所有敌方的数据数组，准备好所有的对方坦克对象
 		createAllEnemyTanks();
 		enemyTanksScript = 3;
-	}
+	} //这是在创建对方坦克的时候就设置到mainPanel上面吗？
 	
 //	改动九：制造死亡事件
 	
@@ -86,6 +66,7 @@ public class EnemyTanksManager {
 		MainPanel.getInstance().repaint();
 //		再移除这个map中对应的键值对
 		enemyTanksLocations.remove(x);
+		x.alive = false;
 	}
 	
 

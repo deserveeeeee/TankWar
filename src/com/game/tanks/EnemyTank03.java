@@ -3,22 +3,24 @@
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import com.game.bullet.AllBullets;
+import com.game.bullet.EnemyBullets;
+import com.game.ui.MainPanel;
+
 
 public class EnemyTank03 extends EnemyTanks {
-
-
 
 	public EnemyTank03(int x, int y, int m, int n) {
 		super(x, y, m, n);
 		lifeValue = 2;
 		//红色坦克初始生命值为2，
-				//被普通子弹打一次就-1。
-				// 特殊子弹攻击值为一次性-3.
+		//被普通子弹打一次就-1。
+		// 特殊子弹攻击值为一次性-3.
 		
 		direction = KeyEvent.VK_S;
 		final EnemyTank03 ref = this;
 		
-		Thread run = new Thread(new Runnable() {
+		run = new Thread(new Runnable() {
 				@Override
 				public void run() {
 					while(true){
@@ -37,12 +39,24 @@ public class EnemyTank03 extends EnemyTanks {
 						char [] dirs = {'W','A','S','D'};
 						ref.move(dirs[ram]);
 						direction = reDirection(6,dirs[ram]);
+						
+						if (ref.alive) {
+							ram = new Random().nextInt(2);
+							if (ram == 1) {
+								ref.shoot();
+							}
+						}else{
+							run.interrupt();
+							break;
+						}
 					}
 				}
 			});
 		
 		run.start();
 	}
+	
+
 	
 	/**
 	 * 

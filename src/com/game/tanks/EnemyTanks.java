@@ -6,16 +6,22 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import com.game.bullet.AllBullets;
+import com.game.bullet.EnemyBullets;
+import com.game.bullet.MineBullets;
 import com.game.ui.DataCenter;
 import com.game.ui.MainPanel;
 
 public abstract class EnemyTanks extends AllTanks {
 	public int lifeValue;
 	public int direction;
+	boolean alive;
+	Thread run;
 	
 	public EnemyTanks(int x, int y, int m , int n){
 		this.setBounds(40*m, 40*n, 40, 40);
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(x, y)));
+		this.alive = true;
 		
 //		改动一：创建对象的时候就把数组放进去
 		Rectangle c = this.getBounds();
@@ -67,5 +73,10 @@ public abstract class EnemyTanks extends AllTanks {
 		
 		this.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(a, b)));
 		return e;
+	}
+	
+	void shoot(){
+		AllBullets xAllBullets = new EnemyBullets(this.getBounds(), this.direction);
+		MainPanel.getInstance().add(xAllBullets);
 	}
 }
