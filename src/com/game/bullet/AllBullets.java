@@ -15,6 +15,7 @@ import com.game.ui.MainPanel;
 public class AllBullets extends JLabel {
 	Thread xThread;
 	Map<Integer, Image> dirImages = new HashMap<Integer, Image>();
+//	boolean alive;
 //  敌方子弹和我方子弹不同的地方就只在于它们能使得对方的生命值-1（普通子弹）。
 //	其实子弹的构造方法就是发生子弹的方法，而这个方法必须要弄到接口里面
 	public AllBullets(Rectangle rec, int c) {
@@ -25,7 +26,8 @@ public class AllBullets extends JLabel {
 		dirImages.put(KeyEvent.VK_D ,DataCenter.getBulletImage(0));
 		this.setIcon(new ImageIcon(dirImages.get(c)));
 //		设置要去的坐标位置。
-		this.setBounds(rec);	
+		this.setBounds(rec);
+//		alive = true;
 //		新建线程
 		final AllBullets ref = this;
 		xThread = new Thread(new Runnable() {
@@ -51,10 +53,20 @@ public class AllBullets extends JLabel {
 					if (c == KeyEvent.VK_D) {  //D是往右
 						r.x += 40;
 					}
+					
+
 					ref.collision(r);
 					ref.flyStep(r);
+					
+//					if (!alive) {
+//						ref.destroy();
+//						break;
+//					}
+					
 				}
+				
 				ref.destroy();
+				
 			}
 		});
 		xThread.start();
@@ -75,6 +87,8 @@ public class AllBullets extends JLabel {
 		// 子弹碰到水的方法
 		// 先不要超出边界
 		if (i >= DataCenter.map.length || j >= DataCenter.map[0].length) {
+//			alive = false;
+			xThread.interrupt();
 		}else{
 			if (DataCenter.map[i][j] == 9) {
 				// 当碰到水的时候，就把它移除，然后移动子弹，再重新布置水
@@ -90,24 +104,27 @@ public class AllBullets extends JLabel {
 	}
 	
 	
-//  子弹碰到场景物品的方法
+	// 子弹碰到场景物品的方法
 	void collision(Rectangle rec) {
 		int i = rec.y / 40; // 是矩形的y，是二维数组的行数
 		int j = rec.x / 40; // 是矩形的x，是二维数组的列数
 
 		// 先不要超出边界
 		if (i >= DataCenter.map.length || j >= DataCenter.map[0].length) {
+//			alive = false;
 			xThread.interrupt();
-		}else {
+		} else {
 			int k = DataCenter.map[i][j];
-//			如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。
-//			如果碰到了砖头则让砖头消失
+			// 如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。
+			// 如果碰到了砖头则让砖头消失
 			if (k == 1) {
 				DataCenter.brickDisappear(rec);
+//				alive = false;
 				xThread.interrupt();
 			}
-//			如果碰到了钢
+			// 如果碰到了钢
 			if (k == 8) {
+//				alive = false;
 				xThread.interrupt();
 			}
 		}

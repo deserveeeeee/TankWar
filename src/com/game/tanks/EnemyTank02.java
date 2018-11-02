@@ -32,8 +32,7 @@ public class EnemyTank02 extends EnemyTanks {
 //							每移动不了就产生新的方向
 //							Thread.sleep(1000);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							break;
 						}
 						
 						int ram = new Random().nextInt(4);

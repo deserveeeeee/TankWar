@@ -51,22 +51,20 @@ public class MainPanel extends JPanel {
 		
 //		todo-list：
 //		这里只是暂时这样写，然后看看能否把坦克给放上去
-//		this.add(new MineTank()); //最好不要这样写
 		this.add(new HomeBoss());
 //		敌方坦克暂时这样设置，后面需要动起来再修改
-		/*
+//		新建敌方三个坦克
 		EnemyTanks xEnemyTank1 = new EnemyTank01(4,	2,	1,	1);
 		EnemyTanks xEnemyTank2 = new EnemyTank02(0,	2,	29,	1);
 		EnemyTanks xEnemyTank3 = new EnemyTank03(6,	2,	15,	1);
 		this.add(xEnemyTank1);
 		this.add(xEnemyTank2);
 		this.add(xEnemyTank3);
-		*/
-//		新建所有的坦克
+//		新建我方坦克
 		EnemyTanksManager.mineTank = new MineTank();
 		this.add(EnemyTanksManager.mineTank);
 		
-//		EnemyTanksManager xCreator = new EnemyTanksManager();
+//		EnemyTanksManager xEnemyTanksManager = new EnemyTanksManager();
 	}
 	
 	public void addChild() {   //设计布局场景：包括砖块、铁块、水块和草块等不移动的场景

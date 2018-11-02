@@ -96,17 +96,17 @@ public class MineTank extends AllTanks {
 	
 //	死亡方法
 	public void dead(){
-//		让MainPanel里面这个被移除，然后刷新页面
-		MainPanel.getInstance().remove(this);
-		MainPanel.getInstance().repaint();
 		this.life -- ;
+		
 		if (this.life < 0) {
+//			让MainPanel里面这个被移除，然后刷新页面
+			MainPanel.getInstance().remove(this);
+			MainPanel.getInstance().repaint();
 //			todo-list
-//			gameover;
+//			再调用gameover的方法;
 		}else{
 			this.setBounds(40*12, 40*16, 40, 40);
 			this.lifeValue = 2;
-			MainPanel.getInstance().add(this);
 		}
 	}
 }

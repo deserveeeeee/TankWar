@@ -25,7 +25,8 @@ public abstract class EnemyTanks extends AllTanks {
 		
 //		改动一：创建对象的时候就把数组放进去
 		Rectangle c = this.getBounds();
-		EnemyTanksManager.enemyTanksLocations.put(c, this);
+//		EnemyTanksManager.enemyTanksLocations.put(c, this);
+		EnemyTanksManager.enemyTanks.add(this);
 	}
 	
 	
@@ -47,9 +48,11 @@ public abstract class EnemyTanks extends AllTanks {
 		if(DataCenter.map[c.y/40][c.x/40] == 5 || DataCenter.map[c.y/40][c.x/40] == -1){
 //			改动二：当位置成功发生变化以后就
 //			先移除原位置，原对象的数组
-			EnemyTanksManager.enemyTanksLocations.remove(this.getBounds(), this);
+//			EnemyTanksManager.enemyTanksLocations.remove(this.getBounds(), this);
+			EnemyTanksManager.enemyTanks.remove(this);
 //			再把新的位置，原对象装进去
-			EnemyTanksManager.enemyTanksLocations.put(c, this);
+//			EnemyTanksManager.enemyTanksLocations.put(c, this);
+			EnemyTanksManager.enemyTanks.add(this);
 			
 //			让位置更新，即位移。
 			this.setBounds(c);
