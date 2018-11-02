@@ -10,7 +10,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.game.boom.BoomEffect;
+import com.game.tanks.EnemyTanksManager;
 import com.game.ui.DataCenter;
+import com.game.ui.GameOver;
 import com.game.ui.MainPanel;
 
 public class AllBullets extends JLabel {
@@ -73,6 +75,7 @@ public class AllBullets extends JLabel {
 		MainPanel.getInstance().remove(this);
 		MainPanel.getInstance().repaint();
 		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));
+		
 	}
 	
 	
@@ -110,16 +113,19 @@ public class AllBullets extends JLabel {
 			xThread.interrupt();
 		} else {
 			int k = DataCenter.map[i][j];
-			// 如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。
+// 			如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。todo-list
+//			if (rec.x == 14*40 && rec.y==16*40) {
+//				xThread.interrupt();
+//				EnemyTanksManager.mineTank.requestFocus();
+//				MainPanel.getInstance().add(new GameOver());
+//			}
 			// 如果碰到了砖头则让砖头消失
 			if (k == 1) {
 				DataCenter.brickDisappear(rec);
-//				alive = false;
 				xThread.interrupt();
 			}
 			// 如果碰到了钢
 			if (k == 8) {
-//				alive = false;
 				xThread.interrupt();
 			}
 		}

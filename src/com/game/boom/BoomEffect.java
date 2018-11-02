@@ -23,6 +23,7 @@ public class BoomEffect extends JLabel {
 			@Override
 			public void run() {	
 				for (int i = 0; i < 10; i++) {
+					
 					try {
 						Thread.sleep(70);
 					} catch (InterruptedException e) {

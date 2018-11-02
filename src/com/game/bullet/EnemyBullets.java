@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import com.game.tanks.EnemyTanks;
 import com.game.tanks.EnemyTanksManager;
 import com.game.ui.DataCenter;
+import com.game.ui.GameOver;
 import com.game.ui.MainPanel;
 
 public class EnemyBullets extends AllBullets {
@@ -26,6 +27,13 @@ public class EnemyBullets extends AllBullets {
 			xThread.interrupt();
 		}else {
 			int k = DataCenter.map[i][j];
+			
+// 			如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。todo-list
+//			if (rec.x == 14*40 && rec.y==16*40) {
+//				xThread.interrupt();
+//				MainPanel.getInstance().add(new GameOver());
+//			}
+			
 //			如果碰到了砖头则让砖头消失
 			if (k == 1) {
 				DataCenter.brickDisappear(rec);

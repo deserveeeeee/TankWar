@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import com.game.bullet.AllBullets;
 import com.game.bullet.MineBullets;
 import com.game.ui.DataCenter;
+import com.game.ui.GameOver;
 import com.game.ui.MainPanel;
 
 public class MineTank extends AllTanks {
@@ -99,11 +100,10 @@ public class MineTank extends AllTanks {
 		this.life -- ;
 		
 		if (this.life < 0) {
-//			让MainPanel里面这个被移除，然后刷新页面
-			MainPanel.getInstance().remove(this);
-			MainPanel.getInstance().repaint();
-//			todo-list
-//			再调用gameover的方法;
+//			todo-list:
+//			如果我方坦克没命了，就会出现游戏结束
+//			GameOver over = new GameOver();
+//			MainPanel.getBounds().add(over);
 		}else{
 			this.setBounds(40*12, 40*16, 40, 40);
 			this.lifeValue = 2;
