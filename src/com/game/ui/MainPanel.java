@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.game.boom.BoomEffect;
 import com.game.tanks.*;
 
 public class MainPanel extends JPanel {

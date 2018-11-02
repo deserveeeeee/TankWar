@@ -23,19 +23,16 @@ public class EnemyBullets extends AllBullets {
 
 		// 先不要超出边界
 		if (i >= DataCenter.map.length || j >= DataCenter.map[0].length) {
-//			alive = false;
 			xThread.interrupt();
 		}else {
 			int k = DataCenter.map[i][j];
 //			如果碰到了砖头则让砖头消失
 			if (k == 1) {
 				DataCenter.brickDisappear(rec);
-//				alive = false;
 				xThread.interrupt();
 			}
 //			如果碰到了钢
 			if (k == 8) {
-//				alive = false;
 				xThread.interrupt();
 			}
 			
@@ -48,7 +45,6 @@ public class EnemyBullets extends AllBullets {
 					EnemyTanksManager.mineTank.dead();
 				}
 				
-//				alive = false;
 				xThread.interrupt();
 			}
 		}
