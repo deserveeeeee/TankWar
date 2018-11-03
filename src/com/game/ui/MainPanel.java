@@ -46,6 +46,8 @@ public class MainPanel extends JPanel {
 		this.setBounds(0, 0, 1024, 768); // 直接以屏幕大小作为当前视图
 		this.setBackground(Color.black);
 		this.setLayout(null); // 自动布局，用约束的方式，确定界面组件的位置和宽高
+//		把游戏胜利放入panel里面
+		this.add(GameWin.getInstance());
 //		把游戏结束的放入panel里面。
 		this.add(GameOver.getInstance());
 		// 把设计的场景布局放入panel里面。

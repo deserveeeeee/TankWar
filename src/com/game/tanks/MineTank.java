@@ -108,10 +108,8 @@ public class MineTank extends AllTanks {
 		this.life -- ;
 		
 		if (this.life < 0) {
-//			todo-list:
-//			如果我方坦克没命了，就会出现游戏结束
-//			GameOver over = new GameOver();
-//			MainPanel.getBounds().add(over);
+//			我方生命值掉完，遊戲結束了。
+			GameOver.getInstance().floatPic();
 		}else{
 			this.setBounds(40*12, 40*16, 40, 40);
 			this.lifeValue = 2;
