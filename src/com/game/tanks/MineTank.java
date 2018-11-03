@@ -17,27 +17,30 @@ import com.game.ui.MainPanel;
 public class MineTank extends AllTanks {
 //	Rectangle mineRec = new Rectangle(40 , 40);
 	int direction;
-	int life = 2;
-	public int lifeValue = 2;
+	int life;
+	public int lifeValue; 
+	public boolean listener;   //		增加一个是否监听的属性，并且作为判断条件，在游戏结束的时候，让它变成false
+	
 	public MineTank(){
+		
+//		设置好一些基本属性值
+		direction = KeyEvent.VK_W;
+		life =2;
+		lifeValue = 2;
+		listener = true;
+		
 //		在DataCenter里面我方坦克的图片已经准备好了，现在需要把这个图片部署带JLable上
 //		先设置我方坦克的lable大小和位置
-		
 		this.setBounds(40*12, 40*16, 40, 40);
-		
-//		初始坐标设置
-//		mineRec.setLocation(40*12, 40*16);
-		
 //		再把图片部署上去
 		this.setIcon(new ImageIcon(DataCenter.getMineTankImage(0, 0)));
-		direction = KeyEvent.VK_W;
 		
-		final MineTank ref = this;
 //		设置监听事件，一定要用这个来设置焦点
 //		 一个程序的监听事件当下只会被一个对象抓捕
 	//  panel是可以作为焦点的
 //		如果都设置了this.setFocusable(true);那么最先作为焦点的视图，最先抓捕到这个监听事件，然后后面的监听事件就会无效
 		this.setFocusable(true);
+		final MineTank ref = this;
 		this.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -54,6 +57,8 @@ public class MineTank extends AllTanks {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
+//				todo-list
+//				如果listener变为false，则下面的这一段代码都不会执行了。
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					ref.shoot();
 				}else if (e.getKeyCode() == KeyEvent.VK_W ||

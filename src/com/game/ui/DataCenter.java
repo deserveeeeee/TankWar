@@ -39,7 +39,8 @@ public class DataCenter {
 //  所以就把下面手动添加的map方法修为为读取的方式
 //	上面的map数组的数字也要进行修改
 	
-
+//   todo-list：
+//	会对这个map进行数据操作吗？遍历？删除？修改？查找？等
 	static Map<Integer, String> keyImgNames = new TreeMap<Integer, String>();
 	
 	// 静态构造方法：根据key的值找出名字
@@ -157,4 +158,7 @@ public class DataCenter {
 				MainPanel.getInstance().brickJLabels.get(rec));
 		MainPanel.getInstance().brickJLabels.remove(rec);
 	}
+	
+	
+
 }

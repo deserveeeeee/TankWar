@@ -1,4 +1,4 @@
-package com.game.boom;
+package com.game.specialEffect;
 
 import java.awt.Image;
 import java.awt.Rectangle;

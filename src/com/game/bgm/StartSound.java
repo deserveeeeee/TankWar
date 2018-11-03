@@ -19,7 +19,8 @@ public class StartSound {
 			url = uri.toURL(); // 解析地址
 			AudioClip aau;
 			aau = Applet.newAudioClip(url);
-			aau.play();; // 循环播放
+			aau.play(); // 循环播放
+			System.out.println("我开始播放背景音乐了");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -27,23 +28,4 @@ public class StartSound {
 
 }
 
-// private BuildPlayerOne player; // 播放对象
-//
-// public PlayerBGM() {
-// }
-//
-// // 播放方法
-// public void playBGM(){
-// try {
-// player = Manager.createPlayer(new File("sound/start.wav").toURI().toURL());
-// }catch(IOException e) {
-// e.printStackTrace();
-// return;
-// }
-// if (player == null) {
-// System.out.println("播放文件为空");
-// return;
-// }
-// }
-// }
 

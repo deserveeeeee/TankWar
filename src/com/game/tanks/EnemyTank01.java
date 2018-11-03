@@ -3,9 +3,6 @@ package com.game.tanks;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import com.game.bullet.AllBullets;
-import com.game.bullet.EnemyBullets;
-import com.game.ui.MainPanel;
 
 
 public class EnemyTank01 extends EnemyTanks {

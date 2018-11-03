@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 import javax.lang.model.element.Element;
 
-import com.game.boom.BoomEffect;
+import com.game.specialEffect.BoomEffect;
 import com.game.tanks.AllTanks;
 import com.game.tanks.EnemyTank01;
 import com.game.tanks.EnemyTanks;
