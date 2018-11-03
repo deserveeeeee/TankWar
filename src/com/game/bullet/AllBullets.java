@@ -113,12 +113,13 @@ public class AllBullets extends JLabel {
 			xThread.interrupt();
 		} else {
 			int k = DataCenter.map[i][j];
+			
 // 			如果碰到了boss老大，则会直接让游戏结束。直接调用GameOver方法。todo-list
-//			if (rec.x == 14*40 && rec.y==16*40) {
-//				xThread.interrupt();
-//				EnemyTanksManager.mineTank.requestFocus();
-//				MainPanel.getInstance().add(new GameOver());
-//			}
+			if (rec.x == 14*40 && rec.y==16*40) {
+				System.out.println("打到老大了");
+				GameOver.getInstance().floatPic();
+				xThread.interrupt();
+			}
 			// 如果碰到了砖头则让砖头消失
 			if (k == 1) {
 				DataCenter.brickDisappear(rec);

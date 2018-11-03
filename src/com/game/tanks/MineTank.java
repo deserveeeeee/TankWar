@@ -59,18 +59,21 @@ public class MineTank extends AllTanks {
 			public void keyPressed(KeyEvent e) {
 //				todo-list
 //				如果listener变为false，则下面的这一段代码都不会执行了。
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-					ref.shoot();
-				}else if (e.getKeyCode() == KeyEvent.VK_W ||
-						e.getKeyCode() == KeyEvent.VK_S ||
-						e.getKeyCode() == KeyEvent.VK_A ||
-						e.getKeyCode() == KeyEvent.VK_D) {
-					ref.move(e.getKeyCode());
-					direction = reDirection(e.getKeyCode());
-				}else {}	
+				if (listener) {
+					if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+						ref.shoot();
+					}else if (e.getKeyCode() == KeyEvent.VK_W ||
+							e.getKeyCode() == KeyEvent.VK_S ||
+							e.getKeyCode() == KeyEvent.VK_A ||
+							e.getKeyCode() == KeyEvent.VK_D) {
+						ref.move(e.getKeyCode());
+						direction = reDirection(e.getKeyCode());
+					}else {}	
+				}
 			}
 			
 		});
+	
 	}
 	
 	
