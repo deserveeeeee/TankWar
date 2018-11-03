@@ -3,6 +3,7 @@ package com.game.bullet;
 import java.awt.Rectangle;
 
 import javax.lang.model.element.Element;
+import javax.swing.ImageIcon;
 
 import com.game.specialEffect.BoomEffect;
 import com.game.tanks.AllTanks;
@@ -65,17 +66,6 @@ public class MineBullets extends AllBullets {
 				xThread.interrupt();
 			}
 			
-//			如果碰到了敌方坦克：Map的方法
-			/*
-			if(EnemyTanksManager.enemyTanksLocations.containsKey(rec)){
-				EnemyTanks x = EnemyTanksManager.enemyTanksLocations.get(rec);
-				x.lifeValue --;
-				if (x.lifeValue < 0) {
-					EnemyTanksManager.dead(x);
-				}
-				xThread.interrupt();
-			}
-			*/
 //			如果碰到了敌方坦克：Vector的方法
 			for (EnemyTanks xTank : EnemyTanksManager.enemyTanks) {
 				if (rec.x == xTank.getBounds().x && rec.y == xTank.getBounds().y) {
@@ -85,6 +75,13 @@ public class MineBullets extends AllBullets {
 					if (xTank.lifeValue < 0) {
 						kill = true;
 						killedTank= xTank;
+//						这里变颜色并没有能够变回去。
+					}else if (xTank.lifeValue == 0) {
+						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(4, 0)));
+					}else if (xTank.lifeValue == 1) {
+						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(0, 0)));
+					}else {
+						
 					}
 					
 					xThread.interrupt();

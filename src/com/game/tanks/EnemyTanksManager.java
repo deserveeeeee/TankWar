@@ -9,6 +9,8 @@ import java.util.Random;
 import java.util.Vector;
 
 import com.game.bullet.AllBullets;
+import com.game.ui.GameOver;
+import com.game.ui.GameWin;
 import com.game.ui.MainPanel;
 
 
@@ -84,8 +86,10 @@ public class EnemyTanksManager {
 		if(enemyTanksSum > 0){
 			MainPanel.getInstance().add(createRamEnemyTanks());
 			System.out.println("我又出生了");
+		}else if(enemyTanksSum <= 0 && enemyTanks.size() <= 0) {
+//			如果敌方坦克没有了 且 数组里面也没有敌方坦克了。
+			GameWin.getInstance().floatPic();
 		}
-		
 	}
 	
 

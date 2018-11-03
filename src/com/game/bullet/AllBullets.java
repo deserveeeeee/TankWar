@@ -74,8 +74,7 @@ public class AllBullets extends JLabel {
 	void destroy(){
 		MainPanel.getInstance().remove(this);
 		MainPanel.getInstance().repaint();
-		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));
-		
+		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));	
 	}
 	
 	
