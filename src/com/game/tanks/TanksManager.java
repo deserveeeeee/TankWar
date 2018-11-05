@@ -17,6 +17,7 @@ import com.game.ui.MainPanel;
 public class TanksManager {
 //	我只有这么一个我方坦克的对象
 	public static MineTank mineTank;
+	
 //	改动六，设计一个数组里面装有敌方坦克的图片截取情况和初始化位置情况（这个可以游戏设计者在后台进行修改和设置）
 	private static int[][] enemyTanksData = {
 			{4,	2,	1,	1},
@@ -43,7 +44,7 @@ public class TanksManager {
 	};
 	
 //	随机产生一个坦克
-	private static EnemyTanks createRamEnemyTanks(){
+	private EnemyTanks createRamEnemyTanks(){
 		int i = new Random().nextInt(20);
 //			j即列数为第一列（下标为0）的时候，得到的是它的不同Level的坦克
 			switch (enemyTanksData[i][0]) {
@@ -61,15 +62,35 @@ public class TanksManager {
 	}
 	
 
-//	剩余的敌方坦克数量
-	static int enemyTanksSum = 17;
-	public static Vector<EnemyTanks> enemyTanks = new Vector<>();
+//	每一个坦克管理类里面的坦克数量
+	int enemyTanksSum;
+//	总的坦克管理类的数量
+	static int TanksManagerNum = 3;
+//	static int enemyTanksSum = 3;
+//	这个坦克管理类里面装的坦克们
+	public Vector<EnemyTanks> enemyTanks = new Vector<>();
+//	public static Vector<EnemyTanks> enemyTanks = new Vector<>();
 	
-//  构造方法
-	public TanksManager(){} 
+//  构造方法→构造方法就是创建一个随机的敌方坦克
+	public TanksManager(){
+		MainPanel.getInstance().add(createRamEnemyTanks());
+		
+		enemyTanksSum = 6;
+	} 
+	
+//	制造坦克
+	public void createAdd(){
+//		
+		EnemyTanks xEnemyTanks = this.createRamEnemyTanks();
+		MainPanel.getInstance().add(xEnemyTanks);
+		this.enemyTanks.add(xEnemyTanks);
+		enemyTanksSum --;
+		if (enemyTanksSum <= 0) {
+			TanksManagerNum --;
+		}
+	}
 	
 //	改动九：制造死亡事件
-	
 	public static void dead(EnemyTanks x,AllBullets y){
 //		让MainPanel里面这个被移除，然后刷新页面
 		MainPanel.getInstance().remove(x);
@@ -80,17 +101,31 @@ public class TanksManager {
 //		再移除Vector里面装的这个敌方坦克对象
 		enemyTanks.remove(x);
 		System.out.println("我被移除掉了");
-		enemyTanksSum --;
-//		System.out.println(enemyTanksSum);
 		x.alive = false;
-		if(enemyTanksSum > 0){
-			MainPanel.getInstance().add(createRamEnemyTanks());
-			System.out.println("我又出生了");
-		}else if(enemyTanksSum <= 0 && enemyTanks.size() <= 0) {
-//			todo-list：这个需求并没有成功设置好。
-//			如果敌方坦克没有了 且 数组里面也没有敌方坦克了。
-			GameWin.getInstance().floatPic();
-		}
+		
+		
+		
+		Thread wait = new Thread(new Runnable() {
+			public void run() {
+//				等0.5秒再判断是否产生新的坦克
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(enemyTanksSum <= 20){
+					MainPanel.getInstance().add(createRamEnemyTanks());
+					System.out.println("我又出生了");
+					enemyTanksSum ++;
+				}else if(enemyTanksSum > 20 && enemyTanks.size() <= 0) {
+//					todo-list：这个需求并没有成功设置好。
+//					如果敌方坦克没有了 且 数组里面也没有敌方坦克了。
+					GameWin.getInstance().floatPic();
+				}
+			}
+		});
+		
 	}
 	
 

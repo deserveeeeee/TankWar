@@ -10,6 +10,7 @@ import com.game.bullet.AllBullets;
 import com.game.bullet.EnemyBullets;
 import com.game.bullet.MineBullets;
 import com.game.ui.DataCenter;
+import com.game.ui.GameWin;
 import com.game.ui.MainPanel;
 
 public abstract class EnemyTanks extends AllTanks {
@@ -82,4 +83,27 @@ public abstract class EnemyTanks extends AllTanks {
 		AllBullets xAllBullets = new EnemyBullets(this.getBounds(), this.direction);
 		MainPanel.getInstance().add(xAllBullets);
 	}
+	
+	
+////	改动九：制造死亡事件
+//	public void dead(){
+////		从视图上将它移除
+//		MainPanel.getInstance().remove(this);
+//		this.alive = false;
+//		MainPanel.getInstance().repaint();
+////		再移除这个map中对应的键值对
+//		TanksManager.enemyTanks.remove(this);
+//		System.out.println("我被移除掉了");
+////		判断是否需要增加新的坦克
+//		if(TanksManager.enemyTanksSum <= 20){
+//			TanksManager.enemyTanksSum
+//			MainPanel.getInstance().add(createRamEnemyTanks());
+//			System.out.println("我又出生了");
+//			TanksManager.enemyTanksSum ++;
+//		}else if(TanksManager.enemyTanksSum > 20 /*&& enemyTanks.size() <= 0*/) {
+////			todo-list：这个需求并没有成功设置好。
+////			如果敌方坦克没有了 且 数组里面也没有敌方坦克了。
+//			GameWin.getInstance().floatPic();
+//		}
+//	}
 }

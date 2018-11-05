@@ -16,7 +16,9 @@ import com.game.tanks.*;
 public class MainPanel extends JPanel {
 	public Map<Rectangle, JLabel> brickJLabels = new Hashtable<>();
 	public Map<Rectangle, JLabel> waterJLabels = new Hashtable<>();
-	
+	public TanksManager tanksManager1;
+	public TanksManager tanksManager2;
+	public TanksManager tanksManager3;
 	/**
 	 * 
 	 */

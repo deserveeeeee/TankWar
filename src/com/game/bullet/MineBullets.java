@@ -31,6 +31,7 @@ public class MineBullets extends AllBullets {
 		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));
 		
 		if (kill) {
+			
 			TanksManager.dead(killedTank,this);
 		}else {
 			
