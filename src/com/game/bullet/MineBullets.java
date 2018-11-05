@@ -9,7 +9,7 @@ import com.game.specialEffect.BoomEffect;
 import com.game.tanks.AllTanks;
 import com.game.tanks.EnemyTank01;
 import com.game.tanks.EnemyTanks;
-import com.game.tanks.EnemyTanksManager;
+import com.game.tanks.TanksManager;
 import com.game.ui.DataCenter;
 import com.game.ui.GameOver;
 import com.game.ui.MainPanel;
@@ -31,7 +31,7 @@ public class MineBullets extends AllBullets {
 		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));
 		
 		if (kill) {
-			EnemyTanksManager.dead(killedTank,this);
+			TanksManager.dead(killedTank,this);
 		}else {
 			
 		}
@@ -67,7 +67,7 @@ public class MineBullets extends AllBullets {
 			}
 			
 //			如果碰到了敌方坦克：Vector的方法
-			for (EnemyTanks xTank : EnemyTanksManager.enemyTanks) {
+			for (EnemyTanks xTank : TanksManager.enemyTanks) {
 				if (rec.x == xTank.getBounds().x && rec.y == xTank.getBounds().y) {
 					
 					xTank.lifeValue --;
@@ -75,14 +75,17 @@ public class MineBullets extends AllBullets {
 					if (xTank.lifeValue < 0) {
 						kill = true;
 						killedTank= xTank;
-//						这里变颜色并没有能够变回去。
-					}else if (xTank.lifeValue == 0) {
-						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(4, 0)));
-					}else if (xTank.lifeValue == 1) {
-						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(0, 0)));
-					}else {
-						
+
 					}
+					
+//					todo-list：让这个坦克变成下一等级的坦克
+//					else if (xTank.lifeValue == 0) {
+//						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(4, 0)));
+//					}else if (xTank.lifeValue == 1) {
+//						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(0, 0)));
+//					}else {
+//						
+//					}
 					
 					xThread.interrupt();
 				}

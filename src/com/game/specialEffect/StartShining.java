@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import com.game.tanks.EnemyTank01;
 import com.game.tanks.EnemyTank02;
 import com.game.tanks.EnemyTank03;
-import com.game.tanks.EnemyTanksManager;
+import com.game.tanks.TanksManager;
 import com.game.tanks.MineTank;
 import com.game.ui.MainPanel;
 

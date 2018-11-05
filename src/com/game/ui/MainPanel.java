@@ -73,8 +73,8 @@ public class MainPanel extends JPanel {
 //		this.add(xEnemyTank2);
 //		this.add(xEnemyTank3);
 //////		新建我方坦克
-		EnemyTanksManager.mineTank = new MineTank();
-		this.add(EnemyTanksManager.mineTank);
+		TanksManager.mineTank = new MineTank();
+		this.add(TanksManager.mineTank);
 	}
 	
 	public void addChild() {   //设计布局场景：包括砖块、铁块、水块和草块等不移动的场景

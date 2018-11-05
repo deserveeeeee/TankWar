@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.game.specialEffect.BoomEffect;
-import com.game.tanks.EnemyTanksManager;
+import com.game.tanks.TanksManager;
 import com.game.ui.DataCenter;
 import com.game.ui.GameOver;
 import com.game.ui.MainPanel;

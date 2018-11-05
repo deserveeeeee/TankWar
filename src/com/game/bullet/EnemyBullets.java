@@ -3,7 +3,7 @@ package com.game.bullet;
 import java.awt.Rectangle;
 
 import com.game.tanks.EnemyTanks;
-import com.game.tanks.EnemyTanksManager;
+import com.game.tanks.TanksManager;
 import com.game.ui.DataCenter;
 import com.game.ui.GameOver;
 import com.game.ui.MainPanel;
@@ -46,12 +46,12 @@ public class EnemyBullets extends AllBullets {
 			}
 			
 //			普通子弹，是会造成伤害值-1.
-			if (rec.x == EnemyTanksManager.mineTank.getBounds().x &&
-					rec.y == EnemyTanksManager.mineTank.getBounds().y) {
+			if (rec.x == TanksManager.mineTank.getBounds().x &&
+					rec.y == TanksManager.mineTank.getBounds().y) {
 				
-				EnemyTanksManager.mineTank.lifeValue --;
-				if (EnemyTanksManager.mineTank.lifeValue < 0) {
-					EnemyTanksManager.mineTank.dead();
+				TanksManager.mineTank.lifeValue --;
+				if (TanksManager.mineTank.lifeValue < 0) {
+					TanksManager.mineTank.dead();
 				}
 				
 				xThread.interrupt();

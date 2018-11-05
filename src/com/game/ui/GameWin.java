@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import com.game.tanks.EnemyTanksManager;
+import com.game.tanks.TanksManager;
 
 public class GameWin extends JLabel {
 	
@@ -36,7 +36,7 @@ public class GameWin extends JLabel {
 //	 游戏结束，就会浮动图片
 	 public void floatPic(){
 // 1、游戏结束让我方坦克解除监听事件  
-		EnemyTanksManager.mineTank.listener = false;
+		TanksManager.mineTank.listener = false;
 //		 2、游戏结束让图片浮动起来
 		this.setVisible(true);
 	 }

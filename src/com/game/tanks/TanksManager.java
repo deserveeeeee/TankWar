@@ -14,7 +14,7 @@ import com.game.ui.GameWin;
 import com.game.ui.MainPanel;
 
 
-public class EnemyTanksManager {
+public class TanksManager {
 //	我只有这么一个我方坦克的对象
 	public static MineTank mineTank;
 //	改动六，设计一个数组里面装有敌方坦克的图片截取情况和初始化位置情况（这个可以游戏设计者在后台进行修改和设置）
@@ -66,7 +66,7 @@ public class EnemyTanksManager {
 	public static Vector<EnemyTanks> enemyTanks = new Vector<>();
 	
 //  构造方法
-	public EnemyTanksManager(){} 
+	public TanksManager(){} 
 	
 //	改动九：制造死亡事件
 	
@@ -87,6 +87,7 @@ public class EnemyTanksManager {
 			MainPanel.getInstance().add(createRamEnemyTanks());
 			System.out.println("我又出生了");
 		}else if(enemyTanksSum <= 0 && enemyTanks.size() <= 0) {
+//			todo-list：这个需求并没有成功设置好。
 //			如果敌方坦克没有了 且 数组里面也没有敌方坦克了。
 			GameWin.getInstance().floatPic();
 		}
