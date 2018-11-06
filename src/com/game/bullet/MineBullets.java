@@ -16,9 +16,6 @@ import com.game.ui.MainPanel;
 
 public class MineBullets extends AllBullets {
 	
-	boolean kill;
-	EnemyTanks killedTank;
-	
 	public MineBullets(Rectangle rec, int c) {
 		super(rec, c);
 		
@@ -29,13 +26,6 @@ public class MineBullets extends AllBullets {
 		MainPanel.getInstance().remove(this);
 		MainPanel.getInstance().repaint();
 		MainPanel.getInstance().add(new BoomEffect(this.getBounds()));
-		
-		if (kill) {
-			
-			TanksManager.dead(killedTank,this);
-		}else {
-			
-		}
 	}
 	
 	@Override
@@ -68,17 +58,35 @@ public class MineBullets extends AllBullets {
 			}
 			
 //			如果碰到了敌方坦克：Vector的方法
-			for (EnemyTanks xTank : TanksManager.enemyTanks) {
+			for (EnemyTanks xTank : TanksManager.tanksManager1.enemyTanks) {
 				if (rec.x == xTank.getBounds().x && rec.y == xTank.getBounds().y) {
-					
-					xTank.lifeValue --;
-
-					if (xTank.lifeValue < 0) {
-						kill = true;
-						killedTank= xTank;
-
+								xTank.lifeValue --;
+								if (xTank.lifeValue < 0) {
+									TanksManager.tanksManager1.dead(xTank,this);
+								}
+					xThread.interrupt();	
+				}
+			}		
+			
+			for (EnemyTanks xTank : TanksManager.tanksManager2.enemyTanks) {
+				if (rec.x == xTank.getBounds().x && rec.y == xTank.getBounds().y) {
+								xTank.lifeValue --;
+								if (xTank.lifeValue < 0) {
+									TanksManager.tanksManager2.dead(xTank,this);
+								}
+						xThread.interrupt();
 					}
-					
+			}	
+			
+			for (EnemyTanks xTank : TanksManager.tanksManager3.enemyTanks) {
+				if (rec.x == xTank.getBounds().x && rec.y == xTank.getBounds().y) {
+								xTank.lifeValue --;
+								if (xTank.lifeValue < 0) {
+									TanksManager.tanksManager3.dead(xTank,this);
+								}
+						xThread.interrupt();
+					}
+			}	
 //					todo-list：让这个坦克变成下一等级的坦克
 //					else if (xTank.lifeValue == 0) {
 //						xTank.setIcon(new ImageIcon(DataCenter.getEnemyTankImage(4, 0)));
@@ -87,11 +95,8 @@ public class MineBullets extends AllBullets {
 //					}else {
 //						
 //					}
-					
-					xThread.interrupt();
-				}
-			}
+
 		}
 	}
-
 }
+

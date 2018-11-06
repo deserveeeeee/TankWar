@@ -44,23 +44,26 @@ public class StartShining extends JLabel {
 				
 				MainPanel.getInstance().remove(ref);
 				
+
+				
 				switch (x) {
 				case 1:
 //					第一个敌方坦克
-					MainPanel.getInstance().tanksManager1 = new TanksManager();
-					MainPanel.getInstance().add(new EnemyTank01(4,	2,	1,	1));
+					TanksManager.tanksManager1 = new TanksManager();
+					TanksManager.tanksManager1.createAdd();
 					break;
 
-				case 15:
-//					第二个敌方坦克
-					MainPanel.getInstance().tanksManager2 = new TanksManager();
-					MainPanel.getInstance().add(new EnemyTank03(6,	2,	15,	1));
-					break;
-					
 				case 29:
 //					第三个敌方坦克
-					MainPanel.getInstance().tanksManager3 = new TanksManager();
-					MainPanel.getInstance().add(new EnemyTank02(0,	2,	29,	1));
+					TanksManager.tanksManager2 = new TanksManager();
+					TanksManager.tanksManager2.createAdd();
+					break;
+
+					
+				case 15:
+//					第二个敌方坦克
+					TanksManager.tanksManager3 = new TanksManager();
+					TanksManager.tanksManager3.createAdd();
 					break;
 				}
 			}
